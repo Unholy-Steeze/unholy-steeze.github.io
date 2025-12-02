@@ -41,9 +41,9 @@ function isBot(member) {
     /^bot/i, // starts with "bot"
     /\[bot\]/i, // contains [bot]
     /\(bot\)/i, // contains (bot)
+    /Maki/i,
     /Apollo/i,
     /Medal/i,
-    /Maki/i,
     // /moderator/i, // common bot role names
     // /radio/i,
     // /music/i,
