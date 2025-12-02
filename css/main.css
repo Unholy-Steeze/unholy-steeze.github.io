@@ -1,0 +1,528 @@
+/* ============================================
+   UNHOLY STEEZE - MAIN STYLESHEET
+   Common styles for all pages
+   ============================================ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+  /* Primary Colors - Purple/Magenta Theme */
+  --primary-color: #8B00FF;
+  --primary-dark: #6600CC;
+  --primary-light: #B84DFF;
+
+  /* Gradient Colors - Purple to Magenta to Pink */
+  --gradient-start: #8B00FF;
+  --gradient-end: #FF00FF;
+  --gradient-accent: #FF1493;
+
+  /* Background Colors - Darker Theme */
+  --dark-bg: #0a0a14;
+  --card-bg: #1a0a2e;
+  --body-bg-start: #0a0a14;
+  --body-bg-mid: #1a0a2e;
+  --body-bg-end: #2a0a3e;
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.9);
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --text-dark: #333333;
+
+  /* Shadows - Purple/Magenta Glows */
+  --shadow-sm: 0 2px 8px rgba(139, 0, 255, 0.15);
+  --shadow-md: 0 4px 20px rgba(139, 0, 255, 0.3);
+  --shadow-lg: 0 8px 40px rgba(139, 0, 255, 0.4);
+  --shadow-xl: 0 15px 60px rgba(255, 0, 255, 0.5);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Border Radius */
+  --radius-sm: 10px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 25px;
+  --radius-full: 50px;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg,
+      var(--body-bg-start) 0%,
+      var(--body-bg-mid) 50%,
+      var(--body-bg-end) 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: 30px;
+  /* Space for fixed navbar */
+}
+
+/* ============================================
+   NAVBAR STYLES
+   ============================================ */
+.navbar {
+  background: linear-gradient(135deg,
+      var(--gradient-start) 0%,
+      var(--gradient-end) 100%) !important;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Navbar scrolled state - reduced size */
+.navbar.navbar-scrolled {
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 25px rgba(139, 0, 255, 0.6);
+}
+
+.navbar.navbar-scrolled .navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.navbar.navbar-scrolled .nav-link {
+  font-size: 0.95rem;
+  padding: 0.4rem 0.9rem !important;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: white !important;
+  text-shadow: 0 2px 15px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.6);
+}
+
+.nav-link {
+  color: var(--text-secondary) !important;
+  margin: 0 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 1rem !important;
+  letter-spacing: 0.5px;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+      transparent,
+      white,
+      transparent);
+  transition: width var(--transition-normal);
+  border-radius: 2px;
+}
+
+.nav-link:hover {
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::before {
+  width: 80%;
+}
+
+.nav-link.active {
+  color: white !important;
+  font-weight: 700;
+}
+
+.nav-link.active::before {
+  width: 80%;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 0.75rem;
+  transition: var(--transition-normal);
+}
+
+.navbar-toggler:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================
+   HEADER STYLES
+   ============================================ */
+header {
+  background: linear-gradient(135deg,
+      var(--gradient-start) 0%,
+      var(--gradient-end) 100%);
+  padding: 5rem 2rem !important;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 70%);
+  animation: pulse 6s ease-in-out infinite;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent);
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.1) rotate(10deg);
+    opacity: 0.3;
+  }
+}
+
+header h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.6),
+    0 0 60px rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+  animation: fadeInDown 0.8s ease;
+}
+
+header p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 1px;
+  animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+/* ============================================
+   FOOTER STYLES
+   ============================================ */
+footer {
+  background: linear-gradient(135deg,
+      var(--gradient-start) 0%,
+      var(--gradient-end) 100%);
+  box-shadow: 0 -4px 20px rgba(139, 0, 255, 0.4);
+  padding: 2.5rem 0;
+  margin-top: 4rem;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent);
+}
+
+footer p {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+}
+
+/* ============================================
+   SCROLLBAR STYLES
+   ============================================ */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg,
+      var(--gradient-start),
+      var(--gradient-end));
+  border-radius: 10px;
+  border: 2px solid var(--dark-bg);
+  transition: var(--transition-normal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg,
+      var(--gradient-end),
+      var(--gradient-accent));
+  border-color: var(--primary-dark);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--dark-bg);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg,
+      var(--gradient-start),
+      var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 992px) {
+  header h1 {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+
+  header p {
+    font-size: 1.3rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 3rem 1.5rem !important;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  header p {
+    font-size: 1.2rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .nav-link {
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  header h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 3px;
+}
