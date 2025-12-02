@@ -1,5 +1,5 @@
 // ============================================
-// DISCORD API INTEGRATION FOR ABOUT PAGE
+// DISCORD API INTEGRATION FOR TEAM PAGE
 // Fetches and displays server members dynamically
 // Separates human members from bots
 // ============================================
