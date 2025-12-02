@@ -43,6 +43,7 @@ function isBot(member) {
     /\(bot\)/i, // contains (bot)
     /Apollo/i,
     /Medal/i,
+    /Maki/i,
     // /moderator/i, // common bot role names
     // /radio/i,
     // /music/i,
@@ -65,12 +66,12 @@ function displayMembers(members) {
   if (!members || members.length === 0) {
     membersGrid.innerHTML = `
             <div class="no-members">
-                <p>Nessun membro online al momento</p>
+                <p>No members online at the moment</p>
             </div>
         `;
     botsGrid.innerHTML = `
             <div class="no-members">
-                <p>Nessun bot online al momento</p>
+                <p>No bots online at the moment</p>
             </div>
         `;
     return;
@@ -101,7 +102,7 @@ function displayMembers(members) {
   } else {
     membersGrid.innerHTML = `
             <div class="no-members">
-                <p>Nessun membro umano online</p>
+                <p>No human members online</p>
             </div>
         `;
   }
@@ -114,7 +115,7 @@ function displayMembers(members) {
   } else {
     botsGrid.innerHTML = `
             <div class="no-members">
-                <p>Nessun bot online</p>
+                <p>No bots online</p>
             </div>
         `;
   }
@@ -216,9 +217,9 @@ function animateNumber(element, target) {
 function showError() {
   const errorHTML = `
         <div class="error-message">
-            <p>⚠️ Impossibile caricare i dati</p>
-            <p class="error-details">Assicurati che il widget Discord sia abilitato nelle impostazioni del server</p>
-            <button onclick="loadMembers()" class="btn btn-primary mt-3">Riprova</button>
+            <p>⚠️ Unable to load data</p>
+            <p class="error-details">Make sure the Discord widget is enabled in server settings</p>
+            <button onclick="loadMembers()" class="btn btn-primary mt-3">Retry</button>
         </div>
     `;
 
@@ -236,7 +237,7 @@ function showLoading() {
   const loadingHTML = `
         <div class="loading-container">
             <div class="loading-spinner"></div>
-            <p>Caricamento...</p>
+            <p>Loading...</p>
         </div>
     `;
 
